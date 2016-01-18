@@ -88,7 +88,8 @@ public:
         GPS_TYPE_SIRF  = 6,
         GPS_TYPE_HIL   = 7,
         GPS_TYPE_SBP   = 8,
-        GPS_TYPE_PX4   = 9
+        GPS_TYPE_PX4   = 9,
+        GPS_TYPE_ERB = 13,
     };
 
     /// GPS status codes
@@ -399,6 +400,7 @@ private:
 #if GPS_RTK_AVAILABLE
         struct SBP_detect_state sbp_detect_state;
 #endif
+        struct ERB_detect_state erb_detect_state;
     } detect_state[GPS_MAX_INSTANCES];
 
     struct {
@@ -424,5 +426,6 @@ private:
 #include "AP_GPS_SIRF.h"
 #include "AP_GPS_SBP.h"
 #include "AP_GPS_PX4.h"
+#include "AP_GPS_ERB.h"
 
 #endif // __AP_GPS_H__

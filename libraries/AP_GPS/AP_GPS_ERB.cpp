@@ -186,7 +186,7 @@ AP_GPS_ERB::_parse_gps(void)
         }
         state.num_sats = _buffer.stat.satellites;
         if (next_fix >= AP_GPS::GPS_OK_FIX_3D) {
-            state.last_gps_time_ms = AP_HAL::millis();
+            state.last_gps_time_ms = hal.scheduler->millis();
             state.time_week_ms    = _buffer.stat.time;
             state.time_week       = _buffer.stat.week;
         }
@@ -194,7 +194,6 @@ AP_GPS_ERB::_parse_gps(void)
     case MSG_DOPS:
         Debug("Message DOPS");
         state.hdop = _buffer.dops.hDOP;
-        state.vdop = _buffer.dops.vDOP;
         break;
     case MSG_VEL:
         Debug("Message VEL");
